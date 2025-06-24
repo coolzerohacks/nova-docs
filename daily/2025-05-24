@@ -1,0 +1,40 @@
+## Daily Summary: Nova Dev Progress – 2025-05-24
+
+Today was a huge milestone in Nova's evolution. Here's what we achieved:
+
+### 🧠 Memory and Embeddings
+
+* Switched ChromaDB from default L2 to cosine similarity for better vector matching.
+* Updated `app.py`, F1 ingest, and diary generator to use consistent Chroma setup with `hnsw:space` metadata.
+* Resolved confusion around similarity scores: clarified that lower distances mean higher similarity.
+
+### 🤖 Nova Mistral Core
+
+* Verified that Nova Mistral now selects relevant memories and avoids hallucination.
+* Adjusted thresholds and fallback logic for memory injection based on intent confidence.
+* Ensured intimacy and factual intent handling behave consistently.
+
+### 💬 CodeLlama Coding Brain
+
+* Reconfirmed the simplified route structure in `chat_codellama`.
+* Isolated its system prompt into `system_codellama.py` to keep logic clean.
+* Validated F1 memory match via CTF example; scored responses are sensible and filtered well.
+
+### 🧵 Discord Integration
+
+* Removed legacy `nova-brain`, rewired Discord bot to point to CodeLlama chat endpoint.
+* Converted blocking `requests` calls to `aiohttp` async for better Discord runtime.
+* Fixed critical bugs with indentation and response parsing.
+* Verified bot behavior: messages flow from DM -> memory -> devshell -> reply.
+
+### 🧹 Cleanup & Git
+
+* Removed orphan containers and deleted \~337GB of old Docker images.
+* Restructured repo: added `nova-docs` branch, pushed full sync to main.
+* Set up daily cron job plan for auto-tagging and version sync.
+
+### 🔧 Next Steps
+
+* Tune CodeLlama system prompt tone further.
+* Expand Discord bot with `/status`, `/help`, and memory feedback tools.
+* Begin work on file summarizer -> vector memory ingestion pipeline.
